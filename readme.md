@@ -4,7 +4,7 @@ Do drug targets GO/KEGG enrichment analysis by using weighted hypergeometric tes
 # Install packages
 
 Download, extract `tar.gz`, and install `clusterProfiler2`, `DOSE2`, `drugbankR` package from source
-```{r ins, eval=FALSE}
+```r
 install.packages("clusterProfiler2", repos = NULL, type="source")
 install.packages("DOSE2", repos = NULL, type="source")
 if(! file.exists("./drugbankR_1.3.tar.gz")){
@@ -26,7 +26,7 @@ install.packages("drugbankR", repos = NULL, type="source")
 `type`: "GO" or "KEGG"
 
 `ont`: when type is "GO", select the ontology of enriched GO terms
-```{r examp, eval=TRUE}
+```r
 library(gCMAP); library(utils)
 if(! file.exists("./degList.rds")){
   download.file("http://biocluster.ucr.edu/~yduan004/cmap02/degList.rds", "./degList.rds")
@@ -49,7 +49,7 @@ head(c_kegg[,c("ID", "Description", "GeneRatio", "BgRatio", "pvalue")],10)
 ```
 
 # Do `drug_targets_enrich` analysis by providing drug names.
-```{r exp2, eval=TRUE}
+```r
 test_drug <- c("chlorpromazine","thioridazine","fluphenazine","trifluoperazine","prochlorperazine")
 
 test_ego <- drug_targets_enrich(drugs=test_drug, type="GO", ont="MF", pAdjustMethod = "BH", pvalueCutoff = 0.05, qvalueCutoff = 0.05, minGSSize = 2, maxGSSize = 500)
